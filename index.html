@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Scheduling Visualizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <h2>CPU Scheduling Visualizer</h2>
+    <div class="container">
+        <label>Process ID:</label>
+        <input type="text" id="pid" placeholder="e.g. P1">
+        <label>Arrival Time:</label>
+        <input type="number" id="arrival" placeholder="e.g. 0">
+        <label>Burst Time:</label>
+        <input type="number" id="burst" placeholder="e.g. 5">
+        <label>Priority (if applicable):</label>
+        <input type="number" id="priority" placeholder="e.g. 1">
+        <button onclick="addProcess()">Add Process</button>
+        <br>
+        <label>Quantum (RR Only):</label>
+        <input type="number" id="quantum" value="2" min="1">
+        <select id="algorithm">
+            <option value="fcfs">FCFS</option>
+            <option value="sjf">SJF (Non-Preemptive)</option>
+            <option value="sjf-preemptive">SJF (Preemptive)</option>
+            <option value="priority">Priority Scheduling</option>
+            <option value="rr">Round Robin</option>
+        </select>
+        <button onclick="schedule()">Run Scheduler</button>
+    </div>
+    <table id="processTable">
+        <thead>
+            <tr>
+                <th>Process ID</th>
+                <th>Arrival Time</th>
+                <th>Burst Time</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div class="gantt-chart" id="ganttChart"></div>
+    <div class="results">
+        <p id="avgWaitingTime">Average Waiting Time: N/A</p>
+        <p id="avgTurnaroundTime">Average Turnaround Time: N/A</p>
+    </div>
+</body>
+</html>

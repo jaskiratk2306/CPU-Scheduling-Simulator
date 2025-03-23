@@ -168,5 +168,59 @@ function loadSession() {
     }
 }
 
+let editingProcessIndex = -1;
+
+function updateProcessTable() {
+    const tableBody = document.getElementById("processTable").querySelector("tbody");
+    tableBody.innerHTML = "";
+    processes.forEach((proc, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${proc.pid}</td>
+            <td>${proc.arrival}</td>
+            <td>${proc.burst}</td>
+            <td>${proc.priority}</td>
+            <td><button onclick="selectProcessForEditing(${index})">Edit</button></td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+function selectProcessForEditing(index) {
+    const proc = processes[index];
+    editingProcessIndex = index; // Set the index of the process being edited
+    document.getElementById("editPid").value = proc.pid;
+    document.getElementById("editArrival").value = proc.arrival;
+    document.getElementById("editBurst").value = proc.burst;
+    document.getElementById("editPriority").value = proc.priority;
+}
+
+function editProcess() {
+    if (editingProcessIndex === -1) {
+        alert("Select a process to edit.");
+        return;
+    }
+
+    const pid = document.getElementById("editPid").value;
+    const arrival = parseInt(document.getElementById("editArrival").value);
+    const burst = parseInt(document.getElementById("editBurst").value);
+    const priority = parseInt(document.getElementById("editPriority").value);
+
+    if (arrival >= 0 && burst > 0) {
+        processes[editingProcessIndex] = { pid, arrival, burst, priority, remaining: burst, completed: false };
+        updateProcessTable();
+        alert("Process updated!");
+        clearEditFields(); // Clear the edit fields after updating
+    } else {
+        alert("Please enter valid Arrival and Burst Times.");
+    }
+}
+
+function clearEditFields() {
+    document.getElementById("editArrival").value = "";
+    document.getElementById("editBurst").value = "";
+    document.getElementById("editPriority").value = "";
+}
+
 
 

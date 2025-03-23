@@ -31,21 +31,7 @@
             <option value="rr">Round Robin</option>
         </select>
         <button onclick="schedule()">Run Scheduler</button>
-        <button onclick="saveSession()">Save Session</button>
-        <button onclick="loadSession()">Load Session</button>
 
-        <h3>Edit Process</h3>
-       <label>Process ID:</label>
-        <input type="text" id="editPid" readonly placeholder="Process ID (can't change)">
-       <label>Arrival Time:</label>
-       <input type="number" id="editArrival" placeholder="Arrival Time">
-      <label>Burst Time:</label>
-     <input type="number" id="editBurst" placeholder="Burst Time">
-    <label>Priority:</label>
-   <input type="number" id="editPriority" placeholder="Priority">
-     <button onclick="editProcess()">Edit Process</button>
-
-      
     </div>
     <table id="processTable">
         <thead>

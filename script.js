@@ -168,11 +168,5 @@ function loadSession() {
     }
 }
 
-function clearAllProcesses() {
-    processes = [];  
-    updateProcessTable(); 
-    document.getElementById("ganttChart").innerHTML = ""; 
-    document.getElementById("avgWaitingTime").innerText = "Average Waiting Time: N/A"; 
-    document.getElementById("avgTurnaroundTime").innerText = "Average Turnaround Time: N/A";  
-}
+
 

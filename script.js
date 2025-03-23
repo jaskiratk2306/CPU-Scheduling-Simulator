@@ -131,3 +131,42 @@ let processes = [];
             document.getElementById("avgWaitingTime").innerText = `Average Waiting Time: ${avgWaitingTime.toFixed(2)}`;
             document.getElementById("avgTurnaroundTime").innerText = `Average Turnaround Time: ${avgTurnaroundTime.toFixed(2)}`;
         }
+
+
+function saveSession() {
+    
+    localStorage.setItem("processes", JSON.stringify(processes));
+
+    
+    const algorithm = document.getElementById("algorithm").value;
+    const quantum = document.getElementById("quantum").value;
+    localStorage.setItem("algorithm", algorithm);
+    localStorage.setItem("quantum", quantum);
+
+    
+    alert("Session saved!");
+}
+
+
+function loadSession() {
+    
+    const savedProcesses = localStorage.getItem("processes");
+    const savedAlgorithm = localStorage.getItem("algorithm");
+    const savedQuantum = localStorage.getItem("quantum");
+
+    
+    if (savedProcesses && savedAlgorithm !== null && savedQuantum !== null) {
+        processes = JSON.parse(savedProcesses);
+        document.getElementById("algorithm").value = savedAlgorithm;
+        document.getElementById("quantum").value = savedQuantum;
+
+        
+        updateProcessTable();
+        alert("Session loaded!");
+    } else {
+        alert("No saved session found.");
+    }
+}
+
+
+

@@ -188,7 +188,8 @@ function updateProcessTable() {
 
 function selectProcessForEditing(index) {
     const proc = processes[index];
-    editingProcessIndex = index; 
+
+    editingProcessIndex = index;
     document.getElementById("editPid").value = proc.pid;
     document.getElementById("editArrival").value = proc.arrival;
     document.getElementById("editBurst").value = proc.burst;
@@ -209,8 +210,9 @@ function editProcess() {
     if (arrival >= 0 && burst > 0) {
         processes[editingProcessIndex] = { pid, arrival, burst, priority, remaining: burst, completed: false };
         updateProcessTable();
-        alert("Process updated!");
+        alert("Process updated!"
         clearEditFields(); 
+       
     } else {
         alert("Please enter valid Arrival and Burst Times.");
     }

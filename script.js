@@ -210,7 +210,7 @@ function editProcess() {
     if (arrival >= 0 && burst > 0) {
         processes[editingProcessIndex] = { pid, arrival, burst, priority, remaining: burst, completed: false };
         updateProcessTable();
-        alert("Process updated!"
+        alert("Process updated!");
         clearEditFields(); 
        
     } else {

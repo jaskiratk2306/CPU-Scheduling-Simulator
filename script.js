@@ -225,3 +225,16 @@ function clearEditFields() {
 }
 
 
+function clearAllProcesses() {
+    if (confirm("Are you sure you want to clear all processes?")) {
+        processes = [];
+        updateProcessTable();
+
+        // Also clear Gantt chart and result display
+        document.getElementById("ganttChart").innerHTML = "";
+        document.getElementById("avgWaitingTime").innerText = "";
+        document.getElementById("avgTurnaroundTime").innerText = "";
+
+        alert("All processes cleared.");
+    }
+}
